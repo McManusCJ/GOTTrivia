@@ -34,7 +34,11 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+  'get /admin':{
+    view: 'admin/adminLogin'
+  },
+  'post /admin/main':'AdminController.authenticateAdmin',
 
   /***************************************************************************
   *                                                                          *
