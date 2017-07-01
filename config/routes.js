@@ -31,10 +31,11 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-
-  '/': {
-    view: 'homepage'
-  }
+  
+  /*'/game':{
+	  view: 'readQuestions'
+  },*/
+  'get /game': 'GameController.readQuestions',
 
   /***************************************************************************
   *                                                                          *
