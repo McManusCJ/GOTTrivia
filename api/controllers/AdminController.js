@@ -8,9 +8,15 @@ function authenticateAdmin(req,res){
 	if(req.body.adminPass == "admin")
 		res.status(200).render("admin/main");
 	else {
-		res.status(403).render("403");
+		res.forbidden();
 	}
 }
+
+function showUsers(req,res){
+	res.status(200).render("admin/showUsers");
+}
+
 module.exports = {
 	authenticateAdmin,
+	showUsers,
 };
