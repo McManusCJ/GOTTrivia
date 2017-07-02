@@ -33,16 +33,17 @@ function meter(req,res){
 
 function todos(req,res){
 	return Perfil.find()
-	.then((all) => {
-		res.status(200).render('Perfil',{
-			title: "usuario",
-			perfils: all,
-			layout: "layout"
-		});
-	})
-	.catch((err) =>{
-		res.ok(all).send("algo ocurrio");
-	})
+	.exec((err,all) => {
+		if(err){
+		  return res.status(500).send("algo ocurrio");}
+		else {
+		 	return res.status(200).render('perfil',{
+			  title: "usuario",
+			  perfils: all,
+			  // layout: "layout"
+			});
+		}
+	});
 }
 module.exports = {
 	meter,

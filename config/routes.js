@@ -23,7 +23,7 @@
 module.exports.routes = {
     'post /Perfil': 'PerfilController.meter',
     'get /Perfil': 'PerfilController.todos',
-    'get /Perfil': 'PerfilController.todos',
+    'get /Categ': 'CategController.todos',
     'post /Categ': 'CategController.escoger',
   /***************************************************************************
   *                                                                          *
