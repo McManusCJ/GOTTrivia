@@ -1,32 +1,26 @@
-<!-- <%- partial('layout.ejs') %> -->
- <body>
+  <div class="mdc-card">
     <div class="mdc-card__horizontal-block">
       <section class="mdc-card__primary">
-        <h1 class="mdc-card__title mdc-card__title--large">Title here</h1>
-        <h2 class="mdc-card__subtitle">Subtitle here</h2>
+        <h1 class="mdc-card__title mdc-card__title--large">Beibi</h1>
+        <h2 class="mdc-card__subtitle">Qpi nenes</h2>
       </section>
       <img class="mdc-card__media-item mdc-card__media-item--1x" src="image.jpg"></img>
-      <section class="mdc-card__supporting-text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
-      </section>
+   datos del bebe
       <section class="mdc-card__actions">
-        <button class="mdc-button mdc-button--compact mdc-card__action">Action 1</button>
-        <button class="mdc-button mdc-button--compact mdc-card__action">Action 2</button>
+        <button class="mdc-button mdc-button--compact mdc-card__action">Juega solito :3</button>
+        <button class="mdc-button mdc-button--compact mdc-card__action">Vete alv<3</button>
       </section>
     </div>
-    <% for(perfil of perfils){%>
-      <ul>
-        <li onclick="cambia()" id="<%= perfil.nombre %>">
-           <%= perfil.nombre %>
-        </li>
-      </ul>
-    <% } %>
+  </div>
+  <% for(perfil of perfils){%>
+    <ul>
+      <li onclick="cambia()" id="<%= perfil.nombre %>">
+         <%= perfil.nombre %>
+      </li>
+    </ul>
+  <% } %>
     <script>
     function cambia(){
       console.log("hoad");
     }
     </script>
-  </body>

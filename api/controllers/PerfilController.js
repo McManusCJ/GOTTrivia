@@ -37,10 +37,10 @@ function todos(req,res){
 		if(err){
 		  return res.status(500).send("algo ocurrio");}
 		else {
-		 	return res.status(200).render('perfil',{
+		 	return res.status(200).view('perfil',{
 			  title: "usuario",
 			  perfils: all,
-			  // layout: "layout"
+			  layout: "layout"
 			});
 		}
 	});
