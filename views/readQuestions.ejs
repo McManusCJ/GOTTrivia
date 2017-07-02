@@ -1,5 +1,11 @@
 
 <h1>The winter is coming...</h1>
-<%for(var question in questions){%>
-	<div><%=question%></div>
+<%for(question of questions){%>
+	<div><%=question.question%>
+	</br><img src='images/houseBanners/<%=question.media%>' width='100' height='100'/>
+		</br><input type='radio'/><label><%=question.answer1%></label>
+		</br><input type='radio'/><label><%=question.answer2%></label>
+		</br><input type='radio'/><label><%=question.answer3%></label>
+		</br><input type='radio'/><label><%=question.answer4%></label>
+	</div>
 <%}%>
