@@ -32,6 +32,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+<<<<<<< HEAD
   '/': {
     view: 'homepage'
   },
@@ -40,6 +41,11 @@ module.exports.routes = {
   },
   'post /admin/main':'AdminController.authenticateAdmin',
   'get /admin/users':'AdminController.showUsers',
+=======
+  'POST /user/register':'loginController.newUser',
+  'GET /user/index':'loginController.index',
+  'POST /user/login':'loginController.login',
+>>>>>>> caeeb6dec14bce962aa1f7b3d95e54d5edac9598
 
   /***************************************************************************
   *                                                                          *
