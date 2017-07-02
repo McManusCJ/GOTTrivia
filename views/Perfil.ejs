@@ -1,8 +1,13 @@
 <%- partial('common/navbar.ejs')%>
 <% for(perfil of perfils){%>
   <ul>
-    <li>
+    <li onclick="cambia()"/>
        <%= perfil.nombre %>
     </li>
   </ul>
 <% } %>
+<script>
+function cambia(){
+  console.log("hoad");
+}
+</script>
