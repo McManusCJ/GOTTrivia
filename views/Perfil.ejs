@@ -14,6 +14,32 @@
       </section>
     </div>
   </div>
+<button id="default-dialog-activation" class="mdc-button mdc-button--primary mdc-button--raised">Show Dialog</button>
+<!-- dialog -->
+
+<div class="demo-body">
+      <aside id="mdc-dialog-default"
+          class="mdc-dialog"
+          role="alertdialog"
+          aria-hidden="true"
+          aria-labelledby="mdc-dialog-default-label"
+          aria-describedby="mdc-dialog-default-description">
+        <div class="mdc-dialog__surface">
+          <header class="mdc-dialog__header">
+            <h2 id="mdc-dialog-default-label" class="mdc-dialog__header__title">
+              Use Google's location service?
+            </h2>
+          </header>
+          <section id="mdc-dialog-default-description" class="mdc-dialog__body">
+            Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.
+          </section>
+          <footer class="mdc-dialog__footer">
+            <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Decline</button>
+            <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Accept</button>
+          </footer>
+        </div>
+        <div class="mdc-dialog__backdrop"></div>
+      </aside>
   <% for(perfil of perfils){%>
     <ul>
       <li onclick="cambia()" id="<%= perfil.nombre %>">
@@ -22,7 +48,24 @@
     </ul>
   <% } %>
     <script>
+    var dialogScrollable = new mdc.dialog.MDCDialog(document.querySelector('#mdc-dialog-with-list'));
+
+      dialogScrollable.listen('MDCDialog:accept', function() {
+        console.log('accepted');
+      })
+
+      dialogScrollable.listen('MDCDialog:cancel', function() {
+        console.log('canceled');
+      })
+
+
+      	document.querySelector('#dialog-with-list-activation').addEventListener('click', function (evt) {
+      	  dialogScrollable.lastFocusedTarget = evt.target;
+          dialogScrollable.show();
+      	});
     function cambia(){
       console.log("hoad");
+      console.log($(this).id);
+      $.get("Categ", { retado:$(this).id});
     }
     </script>

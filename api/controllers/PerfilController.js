@@ -38,7 +38,7 @@ function todos(req,res){
 		  return res.status(500).send("algo ocurrio");}
 		else {
 		 	return res.status(200).view('perfil',{
-			  title: "usuario",
+			  title: "perfil",
 			  perfils: all,
 			  layout: "layout"
 			});
