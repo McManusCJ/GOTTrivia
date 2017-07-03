@@ -13,6 +13,7 @@
 			</div>
 <%}%>
 <script>
+
 		$(document).on('click', 'span', (ev) => {
 				var answerUsu = $(ev.target).html();
 	 			var correctAnswer = $(ev.target).siblings().last().val();
@@ -24,21 +25,24 @@
 					console.log('incorrecta');
 				}
 		});
-		$(document).ready(function(){
-			$('#div1').removeAttr('hidden');
-			for(var n = 2; n <= 15; n ++){ //cuando se envien 10 cambiar el limite del for
-				console.log(n);
-				setTimeout(() => {
-					var selectorFirst = "#div" + n;
-					var selectorSecond = "#div" + n-1;
-					console.log(selectorSecond);
-					$(selectorFirst).removeAttr('hidden');
-					$(selectorSecond).attr('hidden');
-				},2000);
 
-			}
+		$(document).ready(() => {
+			$('#div1').removeAttr('hidden');
+			var n = 2;
+			setInterval( () => {
+						if(n < 16){ //cambiar a 11 cuando mande las 10 preguntas solamente
+							var m = n-1;
+							var selectorFirst = "#div" + n;
+							var selectorSecond = "#div" + m;
+							$(selectorFirst).removeAttr('hidden');
+							$(selectorSecond).attr("hidden","hidden");
+						}
+						else{
+								$("#div15").html("<h2>El juego termino...</h2>  Obtuviste    aciertos");
+								clearInterval(this);
+						}
+						n ++;
+			},500,n);
 		});
-		// $(document).ready(() => {
-		// 	setInterval
-		// });
+
 </script>
