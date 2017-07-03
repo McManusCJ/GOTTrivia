@@ -1,45 +1,45 @@
 /**
- * Game.js
+ * Question.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
-//const bcrypt = require('bcrypt');
 module.exports = {
 
   attributes: {
   	question:{
-  		type: 'varchar',
+  		type: 'string',
   		required: true,
   	},
   	media:{
-  		type: 'varchar',
+  		type: 'string',
   		required: true,
   	},
   	answer1:{
-  		type: 'varchar',
+  		type: 'string',
   		required: true,
   	},
   	answer2:{
-  		type: 'varchar',
+  		type: 'string',
   		required: true,
   	},
   	answer3:{
-  		type: 'varchar',
+  		type: 'string',
   		required: true,
   	},
   	answer4:{
-  		type: 'varchar',
+  		type: 'string',
   		required: true,
   	},
   	correctAnswer:{
-  		type: 'varchar',
+  		type: 'string',
   		required: true,
   	},
   	category:{
-  		type: 'varchar',
+  		type: 'string',
   		required: true,
   	},
   }
 };
+  
