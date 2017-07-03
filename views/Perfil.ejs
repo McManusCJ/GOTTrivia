@@ -33,8 +33,10 @@
           <section id="mdc-dialog-default-description" class="mdc-dialog__body">
             <form method="post" action="/game">
               <select name="catego">
+                <Option value="logos">logos</option>
                 <% for(categ of categs){%>
                   <option value="<%= categ.categoria %>"> <%= categ.categoria %></option>
+
                 <% } %>
                   <input type="submit" hidden="hidden" id="tiger"/>
               </select>
@@ -55,6 +57,7 @@
     </ul>
   <% } %>
     <script>
+
     var dialog = new mdc.dialog.MDCDialog(document.querySelector('#mdc-dialog-default'));
     $(document).on("click",".default-dialog-activation",function(evt){
         dialog.lastFocusedTarget = evt.target;

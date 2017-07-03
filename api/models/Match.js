@@ -8,9 +8,15 @@
 //const bcrypt = require('bcrypt');
 module.exports = {
   attributes:{
+    seen:{
+      type:"boolean",
+      required:true,
+      defaultsTo:false,
+    },
     status:{
       type:"boolean",
       required:true,
+      defaultsTo:false,
     },
     player1:{
       type:"integer",

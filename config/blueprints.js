@@ -160,4 +160,3 @@ module.exports.blueprints = {
   // defaultLimit: 30
 
 };
->>>>>>> 15026526e5b84b653227e5c712032778536af998
