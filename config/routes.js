@@ -21,9 +21,9 @@
  */
 
 module.exports.routes = {
-    'post /Perfil': 'PerfilController.meter',
     'get /Perfil': 'PerfilController.todos',
-    'get /Categ': 'CategController.escoger',
+    // 'get /Perfil': 'PerfilController.escoger',
+    // 'get /Perfil': 'CategController.escoger',
     // 'post /Categ': 'CategController.escoger',
   /***************************************************************************
   *                                                                          *
@@ -35,9 +35,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  }
+  'POST /user/register':'loginController.newUser',
+  'GET /user/index':'loginController.index',
+  'POST /user/login':'loginController.login',
 
   /***************************************************************************
   *                                                                          *

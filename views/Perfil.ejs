@@ -9,12 +9,12 @@
       <img class="mdc-card__media-item mdc-card__media-item--1x" src="image.jpg"></img>
    datos del bebe
       <section class="mdc-card__actions">
-        <button class="mdc-button mdc-button--compact mdc-card__action">Juega solito :3</button>
-        <button class="mdc-button mdc-button--compact mdc-card__action">Vete alv<3</button>
+        <button class="mdc-button mdc-button--primary mdc-button--raised mdc-card__action">Juega solito :3</button>
+        <button class="mdc-button mdc-button--primary mdc-button--raised mdc-card__action">Vete alv<3</button>
       </section>
     </div>
   </div>
-<button id="default-dialog-activation" class="mdc-button mdc-button--primary mdc-button--raised">Show Dialog</button>
+<!-- <button id="default-dialog-activation" class="mdc-button mdc-button--primary mdc-button--raised">Show Dialog</button> -->
 <!-- dialog -->
 
 <div class="demo-body">
@@ -27,45 +27,53 @@
         <div class="mdc-dialog__surface">
           <header class="mdc-dialog__header">
             <h2 id="mdc-dialog-default-label" class="mdc-dialog__header__title">
-              Use Google's location service?
+              Nueva partida ;)
             </h2>
           </header>
           <section id="mdc-dialog-default-description" class="mdc-dialog__body">
-            Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.
+            <form method="post" action="/game">
+              <select name="catego">
+                <% for(categ of categs){%>
+                  <option value="<%= categ.categoria %>"> <%= categ.categoria %></option>
+                <% } %>
+                  <input type="submit" hidden="hidden" id="tiger"/>
+              </select>
+            <form>
           </section>
           <footer class="mdc-dialog__footer">
             <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Decline</button>
-            <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Accept</button>
+            <button type="button submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Accept</button>
           </footer>
         </div>
         <div class="mdc-dialog__backdrop"></div>
       </aside>
   <% for(perfil of perfils){%>
     <ul>
-      <li onclick="cambia()" id="<%= perfil.nombre %>">
+      <li onclick="cambia()" id="<%= perfil.nombre %>" class="default-dialog-activation">
          <%= perfil.nombre %>
       </li>
     </ul>
   <% } %>
     <script>
-    var dialogScrollable = new mdc.dialog.MDCDialog(document.querySelector('#mdc-dialog-with-list'));
-
-      dialogScrollable.listen('MDCDialog:accept', function() {
-        console.log('accepted');
-      })
-
-      dialogScrollable.listen('MDCDialog:cancel', function() {
-        console.log('canceled');
-      })
-
-
-      	document.querySelector('#dialog-with-list-activation').addEventListener('click', function (evt) {
-      	  dialogScrollable.lastFocusedTarget = evt.target;
-          dialogScrollable.show();
-      	});
+    var dialog = new mdc.dialog.MDCDialog(document.querySelector('#mdc-dialog-default'));
+    $(document).on("click",".default-dialog-activation",function(evt){
+        dialog.lastFocusedTarget = evt.target;
+        dialog.show();
+      });
     function cambia(){
+      var dialog = new mdc.dialog.MDCDialog(document.querySelector('#mdc-dialog-default'));
+
+        dialog.listen('MDCDialog:accept', function() {
+          console.log('accepted');
+          $( "#tiger" ).trigger( "click" );
+          //$.post("Categ", { retado:$(this).id});
+        })
+
+        dialog.listen('MDCDialog:cancel', function() {
+          console.log('canceled');
+        })
       console.log("hoad");
       console.log($(this).id);
-      $.get("Categ", { retado:$(this).id});
+
     }
     </script>
