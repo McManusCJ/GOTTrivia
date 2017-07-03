@@ -38,6 +38,7 @@ module.exports.routes = {
   'POST /user/register':'loginController.newUser',
   'GET /user/index':'loginController.index',
   'POST /user/login':'loginController.login',
+  'post /game': 'GameController.initGameVsPLayer',
 
   /***************************************************************************
   *                                                                          *

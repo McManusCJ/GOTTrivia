@@ -6,3 +6,6 @@ Existen dos modos de juego: Contra otro jugador o contra la computadora. En ambo
 
 Aquí se muestran las instrucciones para clonar el repositorio y cargar sails:
 http://sailsjs.com/documentation/contributing/code-submission-guidelines/best-practices
+Es necesario correr:
+npm install passport
+npm install bcrypt js
