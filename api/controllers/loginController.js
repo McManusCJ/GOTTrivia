@@ -18,7 +18,5 @@ function newUser(req,res){
 	})
 };
 module.exports = {
-	newUser,
-	index,
-	login
+	newUser
 };

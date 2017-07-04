@@ -47,6 +47,6 @@ function buscar(req,res){
 }
 
 module.exports = {
-	todos,
+	getUsersAndCat,
 	buscar,
 };
