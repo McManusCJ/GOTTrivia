@@ -21,10 +21,10 @@
 	 			var correctAnswer = $(ev.target).siblings().last().val();
 				console.log(answerUsu +" "+ correctAnswer);
 				if (answerUsu === correctAnswer){
-					console.log('correcta');
+					$(ev.target).attr("style","background-color:#11D542;");
 				}
 				else{
-					console.log('incorrecta');
+					$(ev.target).attr("style","background-color:#E41D1D;");
 				}
 		});
 
