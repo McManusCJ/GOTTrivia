@@ -21,7 +21,10 @@
  */
 
 module.exports.routes = {
-
+    'get /Perfil': 'UserController.todos',
+    // 'get /Perfil': 'PerfilController.escoger',
+    // 'get /Perfil': 'CategController.escoger',
+    // 'post /Categ': 'CategController.escoger',
   /***************************************************************************
   *                                                                          *
   * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *

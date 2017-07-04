@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col s2">
+    <button id="notifButton" class="waves-effect waves-light btn" data-target="modalNotif">Notifications</button>
+  </div>
+</div>
+
+<div class="row">
+    <div id="usuarios" class="col s12">
+      <ul>
+      <% for(perfil of perfils){%>
+          <li>
+             <a class="waves-effect waves-light btn" href="#modalInicio"><%= perfil.name %></a>
+          </li>
+      <% } %>
+      </ul>
+    </div>
+</div>
+
+<div id="modalInicio" class="modal">
+  <div class="modal-content">
+    <h4>Iniciar juego</h4>
+    <form method="post" action="/game">
+        <select name="catego">
+          <% for(categ of categs){%>
+            <option value="<%= categ.categoria %>"><%= categ.categoria %></option>
+          <% } %>
+            <input type="submit" hidden="hidden" id="tiger"/>
+        </select>
+      <form>
+  </div>
+</div>
+
+<div id="modalNotif" class="modal bottom-sheet">
+    <div id="content-notif" class="modal-content">
+      <h4>Notifications</h4>
+    </div>
+  </div>
+<script>
+$("#notifButton").click(function(){
+  $.ajax({
+    method:"post",
+    url:"/match/findMine",
+    success:function(data){
+      $("#content-notif").html(data);
+      $("#modalNotif").modal('open');
+    }
+  });
+});
+</script>

@@ -1,0 +1,6 @@
+<%for(notif of notifications){%>
+  <%if(!notif.status){%>
+    <span><%=notif.player1%> te retó<button>Aceptar</button><button>Rechazar</button></span>
+  <%}else{%>
+    <span>La partida con <%=notif.player2%> terminó. Tu score:<%=notif.scorePlayer1%>. <%=notif.player2%>:<%=notif.scorePlayer2%></span>
+<%}%>
