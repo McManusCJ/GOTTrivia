@@ -21,7 +21,7 @@
  */
 
 module.exports.routes = {
-    'get /Perfil': 'UserController.todos',
+    'get /User': 'UserController.todos',
     // 'get /Perfil': 'PerfilController.escoger',
     // 'get /Perfil': 'CategController.escoger',
     // 'post /Categ': 'CategController.escoger',
