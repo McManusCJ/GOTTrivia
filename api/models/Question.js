@@ -14,7 +14,6 @@ module.exports = {
   	},
   	media:{
   		type: 'string',
-  		required: true,
   	},
   	answer1:{
   		type: 'string',
@@ -42,4 +41,3 @@ module.exports = {
   	},
   }
 };
-  

@@ -4,7 +4,9 @@
 <%for(var question of questions){%>
 			<%cont ++;%>
 			<div id="div<%=cont%>" hidden><%=question.question%>
+			<%if(question.media != null){%>
 					<br/><img src='images/houseBanners/<%=question.media%>' width='100' height='100'/>
+			<%}%>
 					<br/><span><%=question.answer1%></span>
 					<br/><span><%=question.answer2%></span>
 					<br/><span><%=question.answer3%></span>
