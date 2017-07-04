@@ -30,7 +30,7 @@ function todos(req,res){
 			{
 				res.status(200).view('perfil',{
 						  title:"perfil",
-							perfils: dormir,
+							perfils: amijito,
 							categs: all,
 							layout:"layout"
 				});
