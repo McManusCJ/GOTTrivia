@@ -7,30 +7,14 @@
 
 const waterfall = require('async/waterfall');
 
-function todos(req,res){
+function getUsersAndCat(req,res){
   var a =  User.find()
-	// .then((amijito) => {
-	// 	var dormir = amijito;
-	// 	var c = Match.find({
-	// 		or :[
-	// 			{player1: 'session_id',
-  //        status: true,
-	// 			 seen: false,
-	// 		 },
-	// 		 {
-	// 			 player2: 'session_id',
-	// 			 status: false,
-	// 		 }
-	// 		]
-	// 	})
-	//
-	// })
   .then((amijito) => {
 		var b = Categ.find().exec((err,all) =>
 			{
 				res.status(200).view('perfil',{
 						  title:"perfil",
-							perfils: dormir,
+							perfils: amijito,
 							categs: all,
 							layout:"layout"
 				});
@@ -57,7 +41,7 @@ function buscar(req,res){
 		 res.status(200).render('notifications',{
 			 	  title:"notifications",
 					notifications: noti,
-					//layout: "layout"
+					layout: "layout"
 			});
 	})
 }

@@ -4,20 +4,34 @@
  * @description :: Server-side logic for managing games
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+const async = require('async');
 
- function readQuestions(req, res){
-  	return Game.find()
-  		.exec((err,foundQuestions) => {
-        if(err){
-          return res.status(500).send("Something was wrong");
-        }
-        else
-    			return res.status(200).render('readQuestions',{
-    				questions:foundQuestions
-    			});
-   });
+function initGameVsPLayer(req,res){
+  Question.find({
+    category:req.body.catego,  //
+  }).then((ids)=>{
+    var random = new Array();
+    var finalQuestions = new Array();
+    var cont=0;
+    while(cont<10)    //genera y escoge 10 preguntas aleatoriamente
+    {
+      var randomNumber = Math.floor(Math.random()*ids.length);
+      if(random.indexOf(randomNumber)===-1)
+      {
+          random.push(randomNumber);
+          finalQuestions.push(ids[randomNumber]);
+          cont++;
+      }
+      if(cont==10)
+        res.view('readQuestions',{
+          questions:finalQuestions,
+        });
+    }
+  }).catch((error)=>{
+    return res.serverError("Error en generacion de preguntas"+error);
+  });
 }
 
 module.exports = {
-	readQuestions,
+  initGameVsPLayer,
 };

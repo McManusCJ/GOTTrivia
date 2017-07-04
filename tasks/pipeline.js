@@ -17,7 +17,6 @@
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
-  'styles/material-components-web.min.css',
   'styles/artAttack.css'
 ];
 
