@@ -1,0 +1,78 @@
+/**
+ * Game.js
+ *
+ * @description :: TODO: You might write a short summary of how this model works and what it represents here.
+ * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
+ */
+
+//const bcrypt = require('bcrypt');
+module.exports = {
+  attributes:{
+    seen:{
+      type:"boolean",
+      required:true,
+      defaultsTo:false,
+    },
+    status:{
+      type:"boolean",
+      required:true,
+      defaultsTo:false,
+    },
+    player1:{
+      type:"integer",
+      required:true,
+    },
+    player2:{
+      type:"integer",
+      required:true,
+    },
+    scorePlayer1:{
+      type:"integer",
+      required:true,
+    },
+    scorePlayer2:{
+      type:"integer",
+      required:false,
+    },
+    questionId1:{
+      type:"integer",
+      required:true,
+    },
+    questionId2:{
+      type:"integer",
+      required:true,
+    },
+    questionId3:{
+      type:"integer",
+      required:true,
+    },
+    questionId4:{
+      type:"integer",
+      required:true,
+    },
+    questionId5:{
+      type:"integer",
+      required:true,
+    },
+    questionId6:{
+      type:"integer",
+      required:true,
+    },
+    questionId7:{
+      type:"integer",
+      required:true,
+    },
+    questionId8:{
+      type:"integer",
+      required:true,
+    },
+    questionId9:{
+      type:"integer",
+      required:true,
+    },
+    questionId10:{
+      type:"integer",
+      required:true,
+    },
+  }
+};

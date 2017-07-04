@@ -2,7 +2,7 @@ const bcrypt=require('bcrypt');
 
 module.export = {
    attributes:{
-     categoria:{
+     categ:{
        type:'string',
      },
      retador:{

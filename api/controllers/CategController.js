@@ -6,17 +6,18 @@
  */
 const waterfall = require('async/waterfall');
 
-function escoger (req,res){
-	Categ.create({
-		categoria: req.body.categoria,
-		retador: req.body.retador,
-		retado:req.body.retado,
-	}).exec((err,categ)=>{
-		console.log('hola');
- 		if(err){
- 			return res.status(500).send('Error');
- 		}
- 		return res.send('Espera tu respuesta :)');
+function escoger(req,res){
+	return Categ.find()
+	.exec((err,all) => {
+		if(err){
+		  return res.status(500).send("algo ocurrio");}
+		else {
+		 	return res.status(200).view('perfil',{
+			  title: "perfil",
+			  categs: all,
+			  layout: "layout"
+			});
+		}
 	});
 }
 
