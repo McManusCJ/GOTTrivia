@@ -40,7 +40,29 @@ function todos(req,res){
     res.status(500).send("algo ocurrio");
   })
 }
+function buscar(req,res){
+	var c = Match.find({
+	or :[
+				{player1: 'session_id',
+         status: true,
+				 seen: false,
+			 },
+			 {
+				 player2: 'session_id',
+				 status: false,
+			 }
+			]
+		})
+	.exec((err,noti)=>{
+		 res.status(200).render('notifications',{
+			 	  title:"notifications",
+					notifications: noti,
+					//layout: "layout"
+			});
+	})
+}
 
 module.exports = {
 	todos,
+	buscar,
 };
