@@ -1,82 +1,49 @@
+<div class="row">
+  <div class="col s2">
+    <button id="notifButton" class="waves-effect waves-light btn" data-target="modalNotif">Notifications</button>
+  </div>
+</div>
 
-<script src="/js/dependencies/jquery-3.2.1.min.js"></script>
-  <div class="mdc-card">
-    <div class="mdc-card__horizontal-block">
-      <section class="mdc-card__primary">
-        <h1 class="mdc-card__title mdc-card__title--large">Beibi</h1>
-        <h2 class="mdc-card__subtitle">Qpi nenes</h2>
-      </section>
-      <img class="mdc-card__media-item mdc-card__media-item--1x" src="image.jpg"></img>
-   datos del bebe
-      <section class="mdc-card__actions">
-        <button class="mdc-button mdc-button--primary mdc-button--raised mdc-card__action">Juega solito :3</button>
-        <button class="mdc-button mdc-button--primary mdc-button--raised mdc-card__action">Vete alv<3</button>
-      </section>
+<div class="row">
+    <div id="usuarios" class="col s12">
+      <ul>
+      <% for(perfil of perfils){%>
+          <li>
+             <a class="waves-effect waves-light btn" href="#modalInicio"><%= perfil.name %></a>
+          </li>
+      <% } %>
+      </ul>
+    </div>
+</div>
+
+<div id="modalInicio" class="modal">
+  <div class="modal-content">
+    <h4>Iniciar juego</h4>
+    <form method="post" action="/game">
+        <select name="catego">
+          <% for(categ of categs){%>
+            <option value="<%= categ.categoria %>"><%= categ.categoria %></option>
+          <% } %>
+            <input type="submit" hidden="hidden" id="tiger"/>
+        </select>
+      <form>
+  </div>
+</div>
+
+<div id="modalNotif" class="modal bottom-sheet">
+    <div id="content-notif" class="modal-content">
+      <h4>Notifications</h4>
     </div>
   </div>
-<!-- <button id="default-dialog-activation" class="mdc-button mdc-button--primary mdc-button--raised">Show Dialog</button> -->
-<!-- dialog -->
-
-<div class="demo-body">
-      <aside id="mdc-dialog-default"
-          class="mdc-dialog"
-          role="alertdialog"
-          aria-hidden="true"
-          aria-labelledby="mdc-dialog-default-label"
-          aria-describedby="mdc-dialog-default-description">
-        <div class="mdc-dialog__surface">
-          <header class="mdc-dialog__header">
-            <h2 id="mdc-dialog-default-label" class="mdc-dialog__header__title">
-              Nueva partida ;)
-            </h2>
-          </header>
-          <section id="mdc-dialog-default-description" class="mdc-dialog__body">
-            <form method="post" action="/game">
-              <select name="catego">
-                <Option value="logos">logos</option>
-                <% for(categ of categs){%>
-                  <option value="<%= categ.categoria %>"> <%= categ.categoria %></option>
-
-                <% } %>
-                  <input type="submit" hidden="hidden" id="tiger"/>
-              </select>
-            <form>
-          </section>
-          <footer class="mdc-dialog__footer">
-            <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Decline</button>
-            <button type="button submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Accept</button>
-          </footer>
-        </div>
-        <div class="mdc-dialog__backdrop"></div>
-      </aside>
-  <% for(perfil of perfils){%>
-    <ul>
-      <li onclick="cambia()" id="<%= perfil.nombre %>" class="default-dialog-activation">
-         <%= perfil.name %>
-      </li>
-    </ul>
-  <% } %>
-    <script>
-
-    var dialog = new mdc.dialog.MDCDialog(document.querySelector('#mdc-dialog-default'));
-    $(document).on("click",".default-dialog-activation",function(evt){
-        dialog.lastFocusedTarget = evt.target;
-        dialog.show();
-      });
-    function cambia(){
-      var dialog = new mdc.dialog.MDCDialog(document.querySelector('#mdc-dialog-default'));
-
-        dialog.listen('MDCDialog:accept', function() {
-          console.log('accepted');
-          $( "#tiger" ).trigger( "click" );
-          //$.post("Categ", { retado:$(this).id});
-        })
-
-        dialog.listen('MDCDialog:cancel', function() {
-          console.log('canceled');
-        })
-      console.log("hoad");
-      console.log($(this).id);
-
+<script>
+$("#notifButton").click(function(){
+  $.ajax({
+    method:"post",
+    url:"/match/findMine",
+    success:function(data){
+      $("#content-notif").html(data);
+      $("#modalNotif").modal('open');
     }
-    </script>
+  });
+});
+</script>
