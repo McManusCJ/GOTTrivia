@@ -1,4 +1,8 @@
 /*Estilado para toda la app GOT Trivia*/
 body{
-  background-color: #80deea;
+  background-image: url("../images/peri.jpg");
+}
+.cari{
+  align:center;
+  background-color: red;
 }

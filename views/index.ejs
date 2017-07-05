@@ -1,14 +1,39 @@
-<h4>Registrate</h4>
-  <form method='POST' action='/user/register'>
-    <input type='text' name='name'/>
-    <input type='text' name='password'/>
-    <input type='date' name='birthday'/>
-    <input type='number' name='avatar'/>
-    <input type='submit'/>
-  </form>
-<h4>Inicia Sesión</h4>
-  <form method='POST' action='/index'>
-    <input type='text' name='name'/>
-    <input type='text' name='password'/>
-    <input type='submit'/>
-  </form>
+<nav class="red darken-4">
+  <div class="center">GAME OF THRONES TRIVIA</div>
+</nav>
+<div class="row" style="alignItems:center">
+       <div class="col s12 m3 offset-m9">
+         <div class="card">
+          <div class="card-content">
+            <h4>Sign in</h4>
+              <form method='POST' action='/index'>
+                <input type='text'placeholder="User account" name='name'/>
+                <input type='password' placeholder="password" name='password'/>
+                <input type='submit' class="btn waves-effect waves-teal red darken-4" value="GO!"/>
+              </br></br><hr/>
+                <div style="align:center"></br></br>
+                <button data-target="modal1" class="waves-effect waves-light red darken-4 btn">Sign up</a>
+                </div>
+             </form>
+            </div>
+         </div>
+       </div>
+     </div>
+     <div id="modal1" class="modal">
+         <div class="modal-content">
+           <h4>Registrate</h4>
+             <form method='POST' action='/user/register'>
+               <input type='text'placeholder="User Account" name='name'/>
+               <input type='password' placeholder="Password" name='password'/>
+               <input type='date' placeholder="Birthday" name='birthday'/>
+               <input type='number' placeholder="Choose your avatar!" name='avatar'/>
+               <input type='submit' class="btn waves-effect waves-teal" value="Acept"/>
+             </form>
+         </div>
+      </div>
+  <script>
+      $(document).ready(function(){
+      // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+    });
+</script>
