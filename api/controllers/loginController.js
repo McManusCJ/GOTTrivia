@@ -17,7 +17,7 @@ const bcrypt = require("bcrypt");
 					return response.status(201).redirect("/main");
 		 	});
 	 }).catch((err)=>{
-		 		return res.status(401).send("Usuario no existe");
+		 		return response.status(401).send("Usuario no existe");
 	 });
 	}
 

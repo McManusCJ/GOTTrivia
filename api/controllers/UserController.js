@@ -8,22 +8,20 @@
 const waterfall = require('async/waterfall');
 
 function getUsersAndCat(req,res){
-  console.log("usersCat")
-  var a =  User.find()
+  console.log("usersCat");
+  User.find()
   .then((amijito) => {
-		var b = Categ.find().exec((err,all) =>
-			{
+		  Categ.find().exec((err,all) =>{
 				res.status(200).view('perfil',{
 						  title:"perfil",
 							perfils: amijito,
 							categs: all,
 							layout:"layout"
 				});
-			})
-		})
-  .catch((err) =>{
+			});
+	}).catch((err) =>{
     res.status(500).send("algo ocurrio");
-  })
+  });
 }
 function buscar(req,res){
 	var c = Match.find({
