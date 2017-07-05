@@ -34,9 +34,9 @@ module.exports.policies = {
   * and its actions                                                          *
   *                                                                          *
   ***************************************************************************/
-  UserController:{
-    getUsersAndCat:"logIn",
-  },
+  /*UserController:{
+    getUsersAndCat:"isAuthenticated",
+  },*/
 
   // RabbitController: {
 

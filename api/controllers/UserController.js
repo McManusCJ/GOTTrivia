@@ -8,6 +8,7 @@
 const waterfall = require('async/waterfall');
 
 function getUsersAndCat(req,res){
+  console.log("usersCat")
   var a =  User.find()
   .then((amijito) => {
 		var b = Categ.find().exec((err,all) =>

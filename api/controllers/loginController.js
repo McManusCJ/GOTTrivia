@@ -4,6 +4,22 @@
  * @description :: Server-side logic for managing userlogins
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+const bcrypt = require("bcrypt");
+ function login(req,response){
+	 User.findOne({name:req.body.name})
+	 .then((data)=>{
+	 		bcrypt.compare(req.body.password,data.password,(err,res)=>{
+			 	if(err)
+			 		return response.serverError("Error interno");
+				else if(!res)
+					return response.status(401).send("Contrasenia incorrecta");
+				else if(res)
+					return response.status(201).redirect("/main");
+		 	});
+	 }).catch((err)=>{
+		 		return res.status(401).send("Usuario no existe");
+	 });
+	}
 
 function newUser(req,res){
  	User.create({
@@ -12,11 +28,12 @@ function newUser(req,res){
  		birthday: req.body.birthday,
  		avatar: req.body.avatar,
  	}).then(() => {
-		res.status(200).render('completed');
+		res.status(200).send('completed');
 	}).catch((err) => {
-		res.status(500).send('Error');
-	})
-};
+		res.serverError('Error');
+	});
+}
 module.exports = {
+	login,
 	newUser
 };

@@ -31,12 +31,12 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-  'post /main': 'UserController.getUsersAndCat',
+  'get /main': 'UserController.getUsersAndCat',
   'POST /user/register':'loginController.newUser',
   'GET /index': {
     view: 'index'
   },
-  //'POST /user/login':'loginController.login',
+  'POST /index':'loginController.login',
   'post /game': 'GameController.initGameVsPLayer',
 
   /***************************************************************************

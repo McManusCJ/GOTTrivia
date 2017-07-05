@@ -1,6 +1,6 @@
-const passport = require('passport'),
-LocalStrategy = require('passport-local').Strategy,
-bcrypt = require('bcryptjs');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcryptjs');
 
 passport.serializeUser(function(user, done) {
     done(null, user.id);
@@ -12,31 +12,36 @@ passport.deserializeUser(function(id, done) {
     });
 });
 
-passport.use(new LocalStrategy({
+passport.use(new LocalStrategy(/*{
     usernameField: 'name',
     passwordField: 'password'
-  },
+  },*/
   function(name, password, done) {
-
+    console.log("entra a function de use");
     User.findOne({ name: name }, function (err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect name.' });
+      if (err) {
+        return done(err);
       }
-
+      if (!user) {
+        return done(null, false, {
+          message: 'Incorrect name.'
+        });
+      }
       bcrypt.compare(password, user.password, function (err, res) {
           if (!res)
             return done(null, false, {
               message: 'Invalid Password'
-            });
-          var returnUser = {
-            name: user.name,
-            createdAt: user.createdAt,
-            id: user.id
-          };
-          return done(null, returnUser, {
-            message: 'Logged In Successfully'
           });
+          return done(null,
+            {
+              name: user.name,
+              createdAt: user.createdAt,
+              id: user.id
+            },
+            {
+              message: 'Logged In Successfully'
+            }
+          );
         });
     });
   }
