@@ -21,10 +21,7 @@
  */
 
 module.exports.routes = {
-    'get /Perfil': 'UserController.todos',
-    // 'get /Perfil': 'PerfilController.escoger',
-    // 'get /Perfil': 'CategController.escoger',
-    // 'post /Categ': 'CategController.escoger',
+
   /***************************************************************************
   *                                                                          *
   * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
@@ -35,9 +32,22 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  '/': {
+    view: 'homepage'
+  },
+  'get /admin':{
+    view: 'admin/adminLogin'
+  },
+  //'get /admin/main':''
+  'post /ready':'QuestionController.newQuestion',
+  'post /admin/main':'AdminController.authenticateAdmin',
+  'get /admin/users':'AdminController.showUsers',
+  'get /main': 'UserController.getUsersAndCat',
   'POST /user/register':'loginController.newUser',
-  'GET /user/index':'loginController.index',
-  'POST /user/login':'loginController.login',
+  'GET /index': {
+    view: 'index'
+  },
+  'POST /index':'loginController.login',
   'post /game': 'GameController.initGameVsPLayer',
 
   /***************************************************************************

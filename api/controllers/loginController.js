@@ -4,30 +4,25 @@
  * @description :: Server-side logic for managing userlogins
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-const passport = require('passport');
-
-function login(req,res){
-		passport.authenticate('local',(err,user,info) => {
-			if((err) || (!user)) {
-				return res.send({
-					message:info.message,
-					user:user
+const bcrypt = require("bcrypt");
+ function login(req,res){
+	 console.log("login")
+	 User.findOne({name:req.body.name})
+	 .then((data)=>{
+			bcrypt.compare(req.body.password,data.password)
+				.then((result)=>{
+						if(result===false)
+							return res.status(401).send("Contrasenia incorrecta");
+						else if(result===true)
+							return res.status(201).redirect("/main");
+				})
+				.catch((err)=>{
+						return response.serverError("Error interno");
 				});
-			}
-			req.logIn(user,(err) => {
-				if(err)
-					res.send(err);
-				return res.send({
-					message:info.message,
-					user:user
-				});
-			});
-		})(req,res);
-}
-
-function index(req,res){
-	 return res.status(200).render('index');
- }
+	 }).catch((err)=>{
+		 		return response.status(401).send("Usuario no existe");
+	 });
+	}
 
 function newUser(req,res){
  	User.create({
@@ -36,13 +31,12 @@ function newUser(req,res){
  		birthday: req.body.birthday,
  		avatar: req.body.avatar,
  	}).then(() => {
-		res.status(200).render('completed');
+		res.status(200).send('completed');
 	}).catch((err) => {
-		res.status(500).send('Error');
-	})
-};
+		res.serverError('Error');
+	});
+}
 module.exports = {
-	newUser,
-	index,
-	login
+	login,
+	newUser
 };

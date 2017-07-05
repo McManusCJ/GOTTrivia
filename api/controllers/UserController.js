@@ -7,43 +7,26 @@
 
 const waterfall = require('async/waterfall');
 
-function todos(req,res){
-  var a =  User.find()
-	// .then((amijito) => {
-	// 	var dormir = amijito;
-	// 	var c = Match.find({
-	// 		or :[
-	// 			{player1: 'session_id',
-  //        status: true,
-	// 			 seen: false,
-	// 		 },
-	// 		 {
-	// 			 player2: 'session_id',
-	// 			 status: false,
-	// 		 }
-	// 		]
-	// 	})
-	//
-	// })
+function getUsersAndCat(req,res){
+  console.log("usersCat");
+  User.find()
   .then((amijito) => {
-		var b = Categ.find().exec((err,all) =>
-			{
+		  Categ.find().exec((err,all) =>{
 				res.status(200).view('perfil',{
 						  title:"perfil",
 							perfils: amijito,
 							categs: all,
 							layout:"layout"
 				});
-			})
-		})
-  .catch((err) =>{
+			});
+	}).catch((err) =>{
     res.status(500).send("algo ocurrio");
-  })
+  });
 }
 function buscar(req,res){
 	var c = Match.find({
 	or :[
-				{player1: 'session_id',
+			 {player1: 'session_id',
          status: true,
 				 seen: false,
 			 },
@@ -57,12 +40,12 @@ function buscar(req,res){
 		 res.status(200).render('notifications',{
 			 	  title:"notifications",
 					notifications: noti,
-					//layout: "layout"
+					layout: "layout"
 			});
 	})
 }
 
 module.exports = {
-	todos,
+	getUsersAndCat,
 	buscar,
 };
