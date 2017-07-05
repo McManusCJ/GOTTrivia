@@ -16,6 +16,8 @@ function showUsers(req,res){
 	res.status(200).render("admin/showUsers");
 }
 
+
+
 module.exports = {
 	authenticateAdmin,
 	showUsers,
