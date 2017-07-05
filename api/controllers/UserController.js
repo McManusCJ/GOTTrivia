@@ -26,7 +26,7 @@ function getUsersAndCat(req,res){
 function buscar(req,res){
 	var c = Match.find({
 	or :[
-				{player1: 'session_id',
+			 {player1: 'session_id',
          status: true,
 				 seen: false,
 			 },

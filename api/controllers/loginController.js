@@ -5,17 +5,20 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 const bcrypt = require("bcrypt");
- function login(req,response){
+ function login(req,res){
+	 console.log("login")
 	 User.findOne({name:req.body.name})
 	 .then((data)=>{
-	 		bcrypt.compare(req.body.password,data.password,(err,res)=>{
-			 	if(err)
-			 		return response.serverError("Error interno");
-				else if(!res)
-					return response.status(401).send("Contrasenia incorrecta");
-				else if(res)
-					return response.status(201).redirect("/main");
-		 	});
+			bcrypt.compare(req.body.password,data.password)
+				.then((result)=>{
+						if(result===false)
+							return res.status(401).send("Contrasenia incorrecta");
+						else if(result===true)
+							return res.status(201).redirect("/main");
+				})
+				.catch((err)=>{
+						return response.serverError("Error interno");
+				});
 	 }).catch((err)=>{
 		 		return response.status(401).send("Usuario no existe");
 	 });
