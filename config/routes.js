@@ -31,6 +31,15 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
+
+  '/': {
+    view: 'homepage'
+  },
+  'get /admin':{
+    view: 'admin/adminLogin'
+  },
+  'post /admin/main':'AdminController.authenticateAdmin',
+  'get /admin/users':'AdminController.showUsers',
   'get /main': 'UserController.getUsersAndCat',
   'POST /user/register':'loginController.newUser',
   'GET /index': {
