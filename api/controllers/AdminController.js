@@ -6,7 +6,7 @@
  */
 function authenticateAdmin(req,res){
 	if(req.body.adminPass == "admin")
-		res.status(200).render("admin/main");
+		res.status(200).view("admin/main");
 	else {
 		res.forbidden();
 	}

@@ -38,6 +38,8 @@ module.exports.routes = {
   'get /admin':{
     view: 'admin/adminLogin'
   },
+  //'get /admin/main':''
+  'post /ready':'QuestionController.newQuestion',
   'post /admin/main':'AdminController.authenticateAdmin',
   'get /admin/users':'AdminController.showUsers',
   'get /main': 'UserController.getUsersAndCat',
