@@ -19,4 +19,6 @@ Si por algo no funciona (deberia porque hicimos merge de adminycateg, game y mas
 
 Sabemos que esta muy incompleto. No nos dio tiempo de terminar pero sobre la marcha aprendimos bastante de sails :)
 
+No sabemos porque en las graficas de contribuidores no aparece Fernanda (me paso lo mismo el curso web del año pasado a mi) pero si ves la lista de commits estan todos los que hizo ella.
+
 Por cierto, como podras ver, Aaron solo hizo un commit y no se reunio mas de dos horas con nosotros.
